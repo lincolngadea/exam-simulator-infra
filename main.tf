@@ -4,7 +4,7 @@ resource "aws_elastic_beanstalk_application" "exam_simulator" {
 }
 
 resource "aws_s3_bucket" "eb_app_bucket" {
-  bucket = "exam-simulator-artifacts-bucket-unique" # Certifique-se de usar um nome único
+  bucket = "exam-simulator-artifacts-bucket" # Certifique-se de usar um nome único
 }
 
 resource "aws_elastic_beanstalk_application_version" "exam_simulator_version" {

@@ -24,7 +24,7 @@ jobs:
         run: terraform init
 
       - name: Terraform Plan
-        run: terraform plan -var="db_password=${{ secrets.DB_PASSWORD }}" -var="db_username=${{ secrets.DB_USERNAME }}" -var="eb_env_name=${{ secrets.EB_ENV_NAME }}" -var="eb_app_name=${{ secrets.EB_APP_NAME }}" -var="allowed_cidr=${{ secrets.ALLOWED_CIDR }}"
+        run: terraform plan -out=tfplan -var="db_password=${{ secrets.DB_PASSWORD }}" -var="db_username=${{ secrets.DB_USERNAME }}" -var="eb_env_name=${{ secrets.EB_ENV_NAME }}" -var="eb_app_name=${{ secrets.EB_APP_NAME }}" -var="allowed_cidr=${{ secrets.ALLOWED_CIDR }}"
 
       # Opcional: Solicitar aprovação manual para aplicar em produção
       - name: Terraform Apply

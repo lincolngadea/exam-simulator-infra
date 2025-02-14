@@ -30,7 +30,12 @@ variable "db_password" {
 variable "allowed_cidr" {
   description = "CIDR block allowed to access RDS"
   type        = string
-  default = "0.0.0.0/0"
+  default     = "0.0.0.0/0"
+
+  validation {
+    condition     = can(regex("^([0-9]{1,3}\\.){3}[0-9]{1,3}/[0-9]{1,2}$", var.allowed_cidr))
+    error_message = "The allowed_cidr variable must be a valid CIDR block."
+  }
 }
 
 variable "vpc_id" {
