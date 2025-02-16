@@ -20,6 +20,17 @@ jobs:
         with:
           terraform_version: "1.0.0"
 
+      - name: Verify Terraform Version
+        run: terraform version
+
+      - name: Verify Environment Variables
+        run: |
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}"
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}"
+          echo "EB_ENV_NAME=${{ secrets.EB_ENV_NAME }}"
+          echo "EB_APP_NAME=${{ secrets.EB_APP_NAME }}"
+          echo "ALLOWED_CIDR=${{ secrets.ALLOWED_CIDR }}"
+
       - name: Terraform Init
         run: terraform init
 
